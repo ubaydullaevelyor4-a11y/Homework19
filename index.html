@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Quiz Game</title>
+  <style>
+    :root {
+      --primary: #4ade80;
+      --primary-dark: #22c55e;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --wrong: #f87171;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .score {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .question-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .speaker-btn {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      color: black;
+      border: none;
+      border-radius: 50%;
+      font-size: 2rem;
+      cursor: pointer;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .speaker-btn:hover {
+      background: var(--primary-dark);
+      transform: scale(1.08);
+    }
+
+    .question-text {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .option {
+      background: rgba(255,255,255,0.07);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .option:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .option.selected {
+      background: var(--primary);
+      color: black;
+      border-color: var(--primary-dark);
+      font-weight: bold;
+    }
+
+    .submit-btn {
+      background: var(--primary);
+      color: black;
+      border: none;
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .timer {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-top: 16px;
+    }
+
+    .timer strong {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="title">💡 Voice Quiz Game</div>
+    <div class="score">Score: <span id="score">0</span></div>
+  </div>
+
+  <div class="question-card">
+    <button class="speaker-btn" id="speakBtn">🔊</button>
+    <div class="question-text" id="questionText">
+      Which planet is known as the Red Planet?
+    </div>
+
+    <div class="options" id="options">
+      <div class="option" data-answer="Venus">Venus</div>
+      <div class="option" data-answer="Mars">Mars</div>
+      <div class="option" data-answer="Jupiter">Jupiter</div>
+      <div class="option" data-answer="Saturn">Saturn</div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" disabled>Submit Answer</button>
+  </div>
+
+  <div class="timer">
+    Time: <strong id="time">10</strong> s
+  </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

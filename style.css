@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(249, 238, 226);
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
